@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,18 +25,18 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -66,22 +64,25 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\rail.ico"
-IDR_RAILTYPE            ICON    DISCARDABLE     "res\\railDoc.ico"
+IDR_MAINFRAME           ICON                    "res\\rail.ico"
+
+IDR_RAILTYPE            ICON                    "res\\railDoc.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
-IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+IDR_MAINFRAME TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -105,7 +106,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -155,7 +156,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
     "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
@@ -178,8 +179,8 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOG 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About rail"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -189,18 +190,16 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
 END
 
-IDD_TrainListDIALOG DIALOG DISCARDABLE  0, 0, 285, 215
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_TrainListDIALOG DIALOG 0, 0, 285, 215
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Train List"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,228,194,50,14
-    LISTBOX         IDC_LIST1,93,100,88,83,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_HSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST1,93,100,88,83,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     LTEXT           "Total Cost:",IDC_STATIC,91,55,35,8
     EDITTEXT        IDC_EDITSum,129,54,40,14,ES_AUTOHSCROLL
-    LISTBOX         IDC_LIST2,7,45,70,140,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_TABSTOP
+    LISTBOX         IDC_LIST2,7,45,70,140,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,188,34,40,14,ES_AUTOHSCROLL
     LTEXT           "Patial Optimum Node No :",IDC_STATIC,196,26,82,8
     LTEXT           "Parent:",IDC_STATIC,91,7,24,8
@@ -210,8 +209,7 @@ BEGIN
     LTEXT           "Child1:",IDC_STATIC,159,7,22,8
     EDITTEXT        IDC_Child2,249,7,29,14,ES_AUTOHSCROLL
     LTEXT           "Child2:",IDC_STATIC,219,7,22,8
-    LISTBOX         IDC_LISTPO,190,100,88,83,LBS_NOINTEGRALHEIGHT | 
-                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTPO,190,100,88,83,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     LTEXT           "This Node:",IDC_STATIC,94,36,36,8
     EDITTEXT        IDC_EDITSum2,199,54,40,14,ES_AUTOHSCROLL
     LTEXT           "Finished Cost:",IDC_STATIC,92,73,45,8
@@ -219,107 +217,66 @@ BEGIN
     EDITTEXT        IDC_EDITFCost2,199,70,40,14,ES_AUTOHSCROLL
 END
 
-IDD_TimeTableSettingsDIALOG DIALOG DISCARDABLE  0, 0, 209, 122
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_TimeTableSettingsDIALOG DIALOG 0, 0, 209, 122
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "TimeTable Settings"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,152,101,50,14
-    LISTBOX         IDC_LIST1,7,26,52,53,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_TABSTOP
-    LISTBOX         IDC_LIST3,77,26,52,53,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_TABSTOP
+    LISTBOX         IDC_LIST1,7,26,52,53,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST3,77,26,52,53,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     LTEXT           "Left:",IDC_STATIC,7,7,15,8
     LTEXT           "Right:",IDC_STATIC,78,7,20,8
     DEFPUSHBUTTON   "Apply",IDApply,59,101,50,14
-    LISTBOX         IDC_LISTGrid,154,29,48,40,LBS_NOINTEGRALHEIGHT | 
-                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTGrid,154,29,48,40,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     LTEXT           "Grid:",IDC_STATIC,154,16,16,8
 END
 
-IDD_ComputeSettingsDIALOG DIALOG DISCARDABLE  0, 0, 407, 282
-STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ComputeSettingsDIALOG DIALOGEX 0, 0, 407, 282
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "ComputeSettings"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "Exit",IDOK,197,261,50,14
     GROUPBOX        "Compute Metholds:",IDC_STATIC,7,62,393,194
-    LISTBOX         IDC_LIST1,19,96,75,43,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_HSCROLL | WS_TABSTOP
-    CONTROL         "",IDC_PHYSICAL_MEM,"Static",SS_SIMPLE | SS_SUNKEN | 
-                    WS_GROUP,7,20,45,14
-    LTEXT           "Physical Memory:",IDC_STATIC,7,7,56,8
-    LTEXT           "Available Memory:",IDC_STATIC,77,7,62,8
-    CONTROL         "",IDC_PHYSICAL_MEM2,"Static",SS_SIMPLE | SS_SUNKEN | 
-                    WS_GROUP,80,16,46,14
-    LTEXT           "Limit:",IDC_STATIC,159,7,17,8
-    CONTROL         "",IDC_NodeSize2,"Static",SS_SIMPLE | SS_SUNKEN | 
-                    WS_GROUP,153,20,43,14
+    LISTBOX         IDC_LIST1,22,167,133,43,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     PUSHBUTTON      "Compute",IDC_BUTTONCompute,251,70,36,14
-    LISTBOX         IDC_LIST2,196,96,204,44,LBS_NOINTEGRALHEIGHT | 
-                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Compute All",IDC_BUTTONComputeAll,315,72,66,14,
-                    BS_CENTER | BS_MULTILINE
-    COMBOBOX        IDC_COMBO1,59,50,48,109,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
+    LISTBOX         IDC_LIST2,178,113,204,44,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO1,59,50,48,109,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     LTEXT           "TrainSize:",IDC_STATIC,7,41,32,8
     LTEXT           "Time Interval:",IDC_STATIC,126,41,47,8
-    COMBOBOX        IDC_COMBO2,173,39,34,109,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
-    EDITTEXT        IDC_Result,169,179,231,21,ES_AUTOHSCROLL
-    PUSHBUTTON      "Compute Output",IDC_BUTTONCompute2,17,174,59,14
-    LTEXT           "Space:",IDC_STATIC,137,181,24,8
-    LTEXT           "Time:",IDC_STATIC,141,205,18,8
-    EDITTEXT        IDC_Result2,169,206,231,23,ES_AUTOHSCROLL
-    COMBOBOX        IDC_SearchCOMBO,19,74,74,58,CBS_DROPDOWNLIST | 
-                    WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Show Search Tree ",IDC_ShowCHECK,"Button",
-                    BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_GROUP | WS_TABSTOP,
-                    217,20,79,16
+    COMBOBOX        IDC_COMBO2,173,39,34,109,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_SearchCOMBO,19,74,83,58,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Show Search Tree ",IDC_ShowCHECK,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | WS_GROUP | WS_TABSTOP,217,20,79,16
     PUSHBUTTON      "Text >>",IDC_BUTTONText,85,261,50,14
     LTEXT           "Arl order:",IDC_STATIC,217,41,31,8
-    COMBOBOX        IDC_COMBO3,254,38,34,109,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
+    COMBOBOX        IDC_COMBO3,254,38,34,109,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "Show Optimal",IDC_BUTTONShowOpt,17,261,50,14
-    EDITTEXT        IDC_EDITNum,16,148,33,14,ES_AUTOHSCROLL
     EDITTEXT        IDC_Seed,341,37,40,14,ES_AUTOHSCROLL
     LTEXT           "Seed:",IDC_STATIC,303,42,31,8
-    PUSHBUTTON      "Summary Files",IDC_BUTTONCompute3,17,193,59,14
-    LISTBOX         IDC_LISTRule,101,99,83,40,LBS_NOINTEGRALHEIGHT | 
-                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTRule,15,118,132,40,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     LTEXT           "TrainType:",IDC_STATIC,126,55,40,8
     EDITTEXT        IDC_SpeedRatio,254,52,26,12,ES_AUTOHSCROLL
     LTEXT           "Speed:",IDC_STATIC,217,55,31,8
     EDITTEXT        IDC_TypeRatio,173,52,26,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "SpeedRatio File",IDC_OutputFile2,17,210,59,14
-    COMBOBOX        IDC_COMBO4,59,33,48,109,CBS_DROPDOWNLIST | WS_VSCROLL | 
-                    WS_TABSTOP
+    COMBOBOX        IDC_COMBO4,59,33,48,109,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_FilterWidth,157,83,17,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_Result3,169,151,231,23,ES_AUTOHSCROLL
-    LTEXT           "Solutions:",IDC_STATIC,131,147,32,8
     EDITTEXT        IDC_BeamWidth,157,68,17,14,ES_AUTOHSCROLL
     LTEXT           "Beam Width",IDC_STATIC,107,70,40,8
     LTEXT           "Filter Width",IDC_STATIC,107,84,36,8
-    CONTROL         "SubOptimalEst",IDC_BestCHECK,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,188,72,62,10
-    EDITTEXT        IDC_KNum,81,148,33,14,ES_AUTOHSCROLL
-    LTEXT           "K",IDC_STATIC,62,151,11,8
-    LTEXT           "Conflict:",IDC_STATIC,141,232,26,8
-    EDITTEXT        IDC_Result4,169,232,231,23,ES_AUTOHSCROLL
+    CONTROL         "SubOptimalEst",IDC_BestCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,188,72,62,10
 END
 
-IDD_TextDIALOG DIALOG DISCARDABLE  0, 0, 383, 212
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_TextDIALOG DIALOG 0, 0, 383, 212
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Text Dialog"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,166,191,50,14
-    LISTBOX         IDC_LIST1,7,7,369,174,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
-                    WS_TABSTOP
+    LISTBOX         IDC_LIST1,7,7,369,174,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
 END
 
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -342,15 +299,13 @@ BEGIN
     BEGIN
         BLOCK "040904B0"
         BEGIN
-            VALUE "CompanyName", "\0"
-            VALUE "FileDescription", "rail MFC Application\0"
-            VALUE "FileVersion", "1, 0, 0, 1\0"
-            VALUE "InternalName", "rail\0"
-            VALUE "LegalCopyright", "Copyright (C) 2000\0"
-            VALUE "LegalTrademarks", "\0"
-            VALUE "OriginalFilename", "rail.EXE\0"
-            VALUE "ProductName", "rail Application\0"
-            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "FileDescription", "rail MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "rail"
+            VALUE "LegalCopyright", "Copyright (C) 2000"
+            VALUE "OriginalFilename", "rail.EXE"
+            VALUE "ProductName", "rail Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
         END
     END
     BLOCK "VarFileInfo"
@@ -359,8 +314,6 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -368,7 +321,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -415,21 +368,32 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ComputeSettingsDIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "rail\n\nRail\n\n\nRail.Document\nRail Document"
 END
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "rail"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -439,7 +403,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "Create a new document\nNew"
     ID_FILE_OPEN            "Open an existing document\nOpen"
@@ -448,13 +412,13 @@ BEGIN
     ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_MRU_FILE1       "Open this document"
     ID_FILE_MRU_FILE2       "Open this document"
@@ -474,18 +438,18 @@ BEGIN
     ID_FILE_MRU_FILE16      "Open this document"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
@@ -500,13 +464,13 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "Change the window size"
     AFX_IDS_SCMOVE          "Change the window position"
@@ -517,13 +481,13 @@ BEGIN
     AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "Restore the window to normal size"
     AFX_IDS_SCTASKLIST      "Activate Task List"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MENU001              "...."
     ID_CreateTree           "CreateTree"
@@ -535,14 +499,14 @@ BEGIN
     ID_TestRV               "Test random variables"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     CG_IDS_PHYSICAL_MEM     "%lu KB"
     CG_IDS_DISK_SPACE       "%lu KB Free on %c:"
     CG_IDS_DISK_SPACE_UNAVAIL "Unavailable"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

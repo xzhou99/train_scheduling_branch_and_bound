@@ -552,21 +552,10 @@ void g_SetupTimeTable(int Seed)
 
    if(g_CurComputeMethodNo==1)
    {
-      g_LowerBoundFlag = false;
-      g_bCutSetFlag = true;
-   }
-
-   if(g_CurComputeMethodNo==2)
-   {
       g_LowerBoundFlag = true;
       g_bCutSetFlag = false;
    }
-
-   if(g_CurComputeMethodNo==3)
-   {
-      g_LowerBoundFlag = true;
-      g_bCutSetFlag = true;
-   }
+     
 
    /*	if(g_SearchFlag==2)
       {

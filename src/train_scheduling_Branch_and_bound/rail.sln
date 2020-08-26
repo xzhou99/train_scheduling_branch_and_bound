@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rail", "rail.vcxproj", "{54106152-B6FB-4A6D-8CEA-E64A527EBEDF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rail", "rail.vcxproj", "{1FC29F7B-7FC3-4897-BF27-2E82DED8617D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{54106152-B6FB-4A6D-8CEA-E64A527EBEDF}.Debug|x86.ActiveCfg = Debug|Win32
-		{54106152-B6FB-4A6D-8CEA-E64A527EBEDF}.Debug|x86.Build.0 = Debug|Win32
-		{54106152-B6FB-4A6D-8CEA-E64A527EBEDF}.Release|x86.ActiveCfg = Release|Win32
-		{54106152-B6FB-4A6D-8CEA-E64A527EBEDF}.Release|x86.Build.0 = Release|Win32
+		{1FC29F7B-7FC3-4897-BF27-2E82DED8617D}.Debug|x86.ActiveCfg = Debug|Win32
+		{1FC29F7B-7FC3-4897-BF27-2E82DED8617D}.Debug|x86.Build.0 = Debug|Win32
+		{1FC29F7B-7FC3-4897-BF27-2E82DED8617D}.Release|x86.ActiveCfg = Release|Win32
+		{1FC29F7B-7FC3-4897-BF27-2E82DED8617D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EBA6C497-0A55-4031-ACDF-DCBC706A2BC9}
+		SolutionGuid = {5A4A7194-807C-466E-A1AA-E5A01D81F140}
 	EndGlobalSection
 EndGlobal

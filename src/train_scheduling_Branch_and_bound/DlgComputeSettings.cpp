@@ -58,22 +58,19 @@ void CDlgComputeSettings::DoDataExchange(CDataExchange* pDX)
    DDX_Control(pDX, IDC_COMBO1, m_Combo);
    DDX_Control(pDX, IDC_LIST2, m_List2);
    DDX_Control(pDX, IDC_LIST1, m_List1);
-   DDX_Text(pDX, IDC_EDITNum, m_Number);
-   DDV_MinMaxInt(pDX, m_Number, 1, 1000);
    DDX_Text(pDX, IDC_Seed, m_Seed);
    DDV_MinMaxInt(pDX, m_Seed, 1, 100000);
    DDX_Text(pDX, IDC_TypeRatio, m_TypeRatio);
    DDV_MinMaxInt(pDX, m_TypeRatio, 0, 100);
    DDX_Text(pDX, IDC_SpeedRatio, m_SpeedRatio);
-   DDV_MinMaxInt(pDX, m_SpeedRatio, 0, 200000);
+
    DDX_Text(pDX, IDC_BestSearchEDIT, m_BestSearch);
    DDX_Text(pDX, IDC_FilterWidth, m_FilterWidth);
    DDV_MinMaxInt(pDX, m_FilterWidth, 1, 100);
    DDX_Text(pDX, IDC_BeamWidth, m_BeamWidth);
    DDV_MinMaxInt(pDX, m_BeamWidth, 1, 100);
    DDX_Check(pDX, IDC_BestCHECK, m_SubOptimalEst);
-   DDX_Text(pDX, IDC_KNum, m_K);
-   DDV_MinMaxInt(pDX, m_K, 0, 1000000);
+
    //}}AFX_DATA_MAP
 
    g_BeamWidth = m_BeamWidth;
@@ -98,8 +95,6 @@ BEGIN_MESSAGE_MAP(CDlgComputeSettings, CDialog)
    ON_BN_CLICKED(IDC_BUTTONCompute3, OnOutputToFile)
    ON_LBN_SELCHANGE(IDC_LISTRule, OnSelchangeLISTRule)
    ON_EN_CHANGE(IDC_TypeRatio, OnChangeTypeRatio)
-   ON_EN_CHANGE(IDC_SpeedRatio, OnChangeSpeedRatio)
-   ON_BN_CLICKED(IDC_OutputFile2, OnOutputFile2)
    ON_CBN_EDITCHANGE(IDC_COMBO4, OnEditchangeCombo4)
    ON_CBN_EDITCHANGE(IDC_COMBO1, OnEditchangeCombo1)
    ON_CBN_SELCHANGE(IDC_COMBO1, OnSelchangeCombo1)
@@ -129,17 +124,15 @@ BOOL CDlgComputeSettings::OnInitDialog()
 
    CDialog::OnInitDialog();
 
-   m_SearchCombo.AddString("DFS");
-   m_SearchCombo.AddString("FFS");
-   m_SearchCombo.AddString("BDS");
+   m_SearchCombo.AddString("DFS: Depth first");
+   m_SearchCombo.AddString("FFS: First first");
+   m_SearchCombo.AddString("BDS: Breath first");
    m_SearchCombo.AddString("Priority Rule");
    m_SearchCombo.AddString("Beam Search");
 
    m_SearchCombo.SetCurSel(0);
    m_List1.AddString("Base Search");
-   m_List1.AddString("Search with Cutset");
-   m_List1.AddString("Search with LowerBound");
-   m_List1.AddString("Search with LowerBound + Cutset");
+   m_List1.AddString("Search with LR Lower Bound");
    m_List1.SetCurSel(0);
 
    m_RuleList.AddString("Random");
@@ -230,18 +223,8 @@ void CDlgComputeSettings::OnBUTTONCompute()
    m_SelNo = m_List1.GetCurSel();
    g_CurComputeMethodNo = m_SelNo;
 
-   g_SetupTimeTable(m_Seed);
+   g_SetupTimeTable(m_Seed);   // main computing function 
    g_pTreeView ->Invalidate ();
-
-   MEMORYSTATUS MemStat;
-   MemStat.dwLength = sizeof(MEMORYSTATUS);
-   GlobalMemoryStatus(&MemStat);
-   strFreeMemory.Format("%d KB", MemStat.dwAvailPhys  / 1024L);
-   //	SetDlgItemText(IDC_PHYSICAL_MEM3, strFreeMemory);
-   m_Memory3 = MemStat.dwAvailPhys;
-   m_Memory4 = m_Memory3 - m_Memory2;
-   strFreeMemory.Format ("%d KB",m_Memory4 / 1024L);
-   //	SetDlgItemText(IDC_PHYSICAL_MEM4, strFreeMemory);
 
    int Size = g_TreeNodeAry.GetSize();
 
@@ -501,43 +484,43 @@ double g_GetSuccRatio(int value[MAX_ProblemSize],int Size)
 
 void CDlgComputeSettings::OnOutputToFile()
 {
-   FILE * pfile;
-   pfile = fopen("D:\\DTAGUI\\TestSpace.dat","w" );
-   fclose(pfile);
-   pfile = fopen("D:\\DTAGUI\\TestTime.dat","w" );
-   fclose(pfile);
-   pfile = fopen("D:\\DTAGUI\\TestConflict.dat","w" );
-   fclose(pfile);
-   pfile = fopen("D:\\DTAGUI\\TestSummary.dat","w");
-   fclose(pfile);
-   pfile = fopen("D:\\DTAGUI\\TestSolution.dat","w");
-   fclose(pfile);
+  ///* FILE * pfile;
+  // pfile = fopen("C:\\DTAGUI\\TestSpace.dat","w" );
+  // fclose(pfile);
+  // pfile = fopen("c:\\DTAGUI\\TestTime.dat","w" );
+  // fclose(pfile);
+  // pfile = fopen("D:\\DTAGUI\\TestConflict.dat","w" );
+  // fclose(pfile);
+  // pfile = fopen("D:\\DTAGUI\\TestSummary.dat","w");
+  // fclose(pfile);
+  // pfile = fopen("D:\\DTAGUI\\TestSolution.dat","w");
+  // fclose(pfile);*/
 
 
-   UpdateData(true);
-   srand((unsigned)m_Seed);
+  // UpdateData(true);
+  // srand((unsigned)m_Seed);
 
-   g_ShowMessageFlag = false;
-   g_ComputingNo =0;
+  // g_ShowMessageFlag = false;
+  // g_ComputingNo =0;
 
-   int MaxTrainSize = m_Combo.GetCurSel() +1;
-   g_ReleaseTimeInterval = (m_Combo2.GetCurSel()+1) * 10;
-   g_ReleaseTimeOrder = m_Combo3.GetCurSel()+1;
-   m_SelNo = m_List1.GetCurSel();
-   g_CurComputeMethodNo = m_SelNo;
+  // int MaxTrainSize = m_Combo.GetCurSel() +1;
+  // g_ReleaseTimeInterval = (m_Combo2.GetCurSel()+1) * 10;
+  // g_ReleaseTimeOrder = m_Combo3.GetCurSel()+1;
+  // m_SelNo = m_List1.GetCurSel();
+  // g_CurComputeMethodNo = m_SelNo;
 
-   int ComputeNumber = m_Number;
+  // int ComputeNumber = m_Number;
 
-   CWaitCursor cursor;
-   /*
-      g_bBestSearch = false;
+  // CWaitCursor cursor;
+  // /*
+  //    g_bBestSearch = false;
 
-      TestOneRun(g_SearchFlag ,  g_CurComputeMethodNo,ComputeNumber );
-      */
+  //    TestOneRun(g_SearchFlag ,  g_CurComputeMethodNo,ComputeNumber );
+  //    */
 
-   TestOneRun(g_SearchFlag ,  g_CurComputeMethodNo,ComputeNumber );
+  // TestOneRun(g_SearchFlag ,  g_CurComputeMethodNo,ComputeNumber );
 
-   MessageBox("                     Game is over!                   ");
+  // MessageBox("                     Game is over!                   ");
 
 }
 
@@ -665,173 +648,6 @@ void CDlgComputeSettings::OnChangeTypeRatio()
    g_TrainTypeRatio = m_TypeRatio / 100.0;
 }
 
-void CDlgComputeSettings::OnChangeSpeedRatio()
-{
-   UpdateData(true);
-   g_SpeedRatio = m_SpeedRatio / 100.0;
-
-}
-
-void CDlgComputeSettings::OnOutputFile2()
-{
-   UpdateData(true);
-   srand((unsigned)m_Seed);
-
-   g_ShowMessageFlag = false;
-   g_ComputingNo =0;
-
-   int MaxTrainSize = m_Combo.GetCurSel() +1;
-   g_ReleaseTimeInterval = (m_Combo2.GetCurSel()+1) * 10;
-   g_ReleaseTimeOrder = m_Combo3.GetCurSel()+1;
-
-   int ComputeNumber = m_Number;
-
-   CWaitCursor cursor;
-
-   FILE * pfile;
-
-   char str1[30];
-   char str2[30];
-
-   char title[200];
-
-   m_SearchCombo.GetLBText(g_SearchFlag,str1);
-   m_List1.GetText(g_CurComputeMethodNo,str2);
-
-   wsprintf(title, " \n-----------------------------------------\nTest %s AND %s \n\n",str1,str2);
-
-   pfile = fopen("D:\\DTAGUI\\TestSpeedRatio.dat","w" );
-   fprintf(pfile, "%s   %d trains",title, MaxTrainSize);
-   fprintf(pfile, "       Error:          Derivation:            Space:           Time:          \n\n");
-   fclose( pfile );
-
-
-
-   for(int t = m_MinTrainNum; t<= m_MaxTrainNum; t++)
-   {
-      bool SuccessFlag[1000];
-      double ExactSolution[100];
-      double ExactTime[1000];
-      double ExactSpace[1000];
-
-      fprintf(pfile, "\n\n\n---------TrainSize:%d-------------\n\n", t);
-
-
-      ComputeNumber = 30;
-
-      int Count=0;
-      for (int s=0; s<=20; s++)
-      {
-	 int FeaCount=0;
-
-	 pfile = fopen("D:\\DTAGUI\\TestSpeedRatio.dat","a" );
-
-	 fprintf(pfile, "#%3.2f  ",(20-s)/10.0);
-	 fclose( pfile );
-
-	 g_SpeedRatio = 2-s/10.0;
-	 srand((unsigned)m_Seed);
-
-	 double SumDerivation=0;
-	 double SumError=0;
-	 double SumSpace=0;
-	 double SumTime=0;
-
-	 for(int i =0; i<ComputeNumber; i++)
-	 {
-
-	    if(s==0)
-	       SuccessFlag[i] = true;
-
-	    g_ComSuccessFlag [i] = 1;
-	    g_ComputingNo = i;
-	    g_ComputingTrainSize = t;
-	    g_CurComputeMethodNo = m_List1.GetCurSel();
-	    g_SetupTimeTable(m_Seed);
-
-	    int NodeSize = g_TreeNodeAry.GetSize ();
-
-
-
-	    if(NodeSize >= g_MAX_NodeSize && !SuccessFlag[i])
-	    {
-	       if(s==0)
-	       {
-		  SuccessFlag[i] = false;
-	       }
-
-	       NodeSize = 9999999;
-	       g_NodeSize[i]=9999999;
-	       g_ComputingTime[i] = 9999999;
-	       g_ComputingConflict[i]= 9999999;
-	       g_ComSuccessFlag [i] = 0;
-	       g_OptValue[i]=9999999;
-
-	    }
-
-	    if(s==0)
-	    {
-	       ExactSolution[i]= g_OptValue[i];
-	       ExactTime[i]= g_ComputingTime[i];
-	       ExactSpace[i]= g_NodeSize[i];
-	       ASSERT(g_ComputingTime[i]>0);
-	    }
-
-	    if(s==0 && SuccessFlag[i])
-	       Count +=1;
-
-	    pfile = fopen("D:\\DTAGUI\\TestSpeedRatio.dat","a" );
-
-	    if(SuccessFlag[i])
-	    {
-	       if( g_FirstFeasible)
-	       {
-		  SumDerivation+=g_OptValue[i]*1.0/ExactSolution[i];
-		  SumTime+=g_ComputingTime[i]*1.0/ExactTime[i];
-		  SumSpace+=g_NodeSize[i]*1.0/ExactSpace[i];
-
-		  FeaCount+=1;
-	       }
-	       else
-		  SumError+=1;
-	    }
-
-
-	    if(SuccessFlag[i])
-	    {
-	       if( !g_FirstFeasible)
-		  fprintf(pfile, "%10.5f ",999.9);
-	       else
-		  fprintf(pfile, "%10.5f ",g_ComputingTime[i]*1.0);
-	    }
-	    else
-	       fprintf(pfile, "%10.5f ",999.9);
-
-
-	    fclose( pfile );
-	 }
-
-	 pfile = fopen("D:\\DTAGUI\\TestSpeedRatio.dat","a" );
-
-	 if(Count>0)
-	    fprintf(pfile, "      %10.5f",SumError/Count);
-	 else
-	    fprintf(pfile, "      %10.5f",-1.0);
-
-	 if(FeaCount>0)
-	    fprintf(pfile, "            %10.5f       %10.5f      %10.5f ",SumDerivation/FeaCount,SumSpace/FeaCount,SumTime/FeaCount);
-	 else
-	    fprintf(pfile, "            %10.5f       %10.5f      %10.5f ",-1.0,-1.0,-1.0);
-
-	 fprintf(pfile, "\n");
-	 fclose( pfile );
-
-      }
-   }
-
-   MessageBox("                     Game is over!                   ");
-
-}
 
 void CDlgComputeSettings::OnEditchangeCombo4()
 {
